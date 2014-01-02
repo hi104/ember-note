@@ -1,0 +1,69 @@
+<div class='app-header'>
+  {{view App.TagInputView tagsBinding='queryTags' tagTextBinding='tagText' }}
+</div>
+
+<div class="fill" style="top:40px;">
+  <div class="fill sidebar" >
+    <div class='sidebar-menu'>
+      <div style='padding:5px;padding-left:15px'>
+        {{view Ember.Select
+        content = App.noteSortPropetyies
+        optionValuePath = "content.key"
+        optionLabelPath = "content.name"
+        selectionBinding = "sortProperty"
+        class = "select-sort-notes"
+        }}
+
+        <div style="float:right;padding-right:0px">
+          {{#link-to "notes.new" class="btn btn-default btn-xs"}}
+          New Note  <span class="glyphicon glyphicon-plus"></span>
+          {{/link-to}}
+        </div>
+      </div>
+    </div>
+    <div id="note-list" tabindex="0" class='fill' >
+      <table class="table table-hover">
+        <tr style="display:none" comments="!!!!!! for bug when add controller first note after with none mactch filter !!!!!">
+          <td></td>
+          <td></td>
+        </tr>
+        {{#each note in controller}}
+
+          {{#link-to "note.show" note.id tagName="tr" currentWhen="note" class='note-row'}}
+          <td >
+            <div>
+              <span class='note-name'>
+                {{note.name}}
+              </span>
+              <span class='note-date'>
+                {{note.updatedAtFromNow}}
+              </span>
+            </div>
+            <div>
+              {{#each tagging in note.taggings}}
+                <span class="label label-default" style='margin-right:3px;'>
+                  {{tagging.tag.name}}
+                </span>
+              {{/each}}
+            </div>
+
+            <div class='note-control'>
+              {{#link-to 'note.edit' note.id class='btn btn-default btn-xs' bubbles=false}}
+              <span class='glyphicon glyphicon-edit'></span>
+              {{/link-to}}
+              <button class='btn btn-default btn-xs' {{action 'delete' note bubbles=false}} >
+                <span class='glyphicon glyphicon-trash'></span>
+              </button>
+            </div>
+          </td>
+          {{/link-to}}
+        {{else}}
+          <tr><td> none item</td></tr>
+        {{/each}}
+      </table>
+    </div>
+  </div>
+  <div id="note" class="fill note" tabindex="0">
+    {{outlet}}
+  </div>
+</div>

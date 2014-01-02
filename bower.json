@@ -1,0 +1,7 @@
+{
+  "name": "EmberNote",
+  "version": "0.0.1",
+  "dependencies": {
+    "ember-addons.bs_for_ember" : ""
+  }
+}

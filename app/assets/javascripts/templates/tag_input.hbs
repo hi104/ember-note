@@ -1,0 +1,9 @@
+{{#each tag in view.tags}}
+  <button class="btn btn-default btn-xs"
+    style='margin-right:3px;font-size:85%;'
+    {{action 'deleteTag' tag target="view" bubbles=false}}>
+      {{tag}}
+      <span style="top:2px" class="glyphicon glyphicon-remove" ></span>
+    </button >
+{{/each}}
+{{view Ember.TextField id="input-add-tag" valueBinding="view.tagText" style="width:20px" placeholder='Search'}}

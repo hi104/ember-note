@@ -1,0 +1,28 @@
+<div class='note-show'>
+  <div class="row note-header" >
+    <div class="note-show-left">
+      <span class='name'>
+        {{name}}
+      </span>
+      {{#each tagging in taggings}}
+        <span class='tag label label-default'>
+          {{tagging.tag.name}}
+        </span>
+      {{/each}}
+    </div>
+    <div class='note-show-right'>
+      <span class='info'>
+        updated at: {{formatDate updated_at 'L'}}
+      </span>
+      {{#link-to 'note.edit' view.context.id class='btn btn-default btn-xs'}}
+      <span class='glyphicon glyphicon-edit'></span>
+      {{/link-to}}
+      <button class='btn btn-default btn-xs' {{action 'delete' view.context}} >
+        <span class='glyphicon glyphicon-trash'></span>
+      </button>
+    </div>
+  </div>
+  <div class='content-markdown'>
+    {{markdown content.content}}
+  </div>
+</div>
