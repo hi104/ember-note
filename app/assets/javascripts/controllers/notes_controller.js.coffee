@@ -84,7 +84,6 @@ App.NotesController = Em.ArrayController.extend(
         tag_names =  @get('queryTags').map((e)->e)
         tag_ids = @getTagIds(tag_names)
 
-
         tag_filter_fn = (note)->
             return false unless note._data['taggings']
             note_tag_ids = note._data['taggings'].map((e)->
@@ -107,7 +106,7 @@ App.NotesController = Em.ArrayController.extend(
         filters.pushObject(name_filter_fn) if names.length > 0
 
         filter_fn = (note)->
-            filters["every"]((e) -> e.call(@, note))
+            filters["any"]((e) -> e.call(@, note))
 
         @set('model.filterFunction', filter_fn)
 
