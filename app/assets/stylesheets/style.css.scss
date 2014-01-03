@@ -70,7 +70,6 @@ html,body {
 .note{
     margin-left:280px;
     overflow-y:auto;
-    padding:0px 15px;
 }
 
 #input-add-tag{
@@ -123,7 +122,8 @@ html,body {
 }
 
 .note-edit{
-    padding: 0px 10px;
+    float:left;width:50%;
+    padding: 0px 25px;
     .error-message span{
         color:red;
     }
@@ -131,6 +131,7 @@ html,body {
 
 
 .note-show{
+    padding:0px 15px;
     .info {
         color:#999;
         margin-right:10px;
@@ -154,4 +155,16 @@ html,body {
         text-align:right;
         margin-right:10px;
     }
+}
+
+.preview{
+    float:left;
+    width:50%;
+    position:absolute;
+    overflow-y:auto;
+    padding:15px;
+    border-left:1px solid #ccc;
+    bottom:0px;
+    margin-left:50%;
+    top:0px;
 }

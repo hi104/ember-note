@@ -20,7 +20,15 @@ App.NoteShowView = Ember.View.extend
         el = $('#note')
         el.on('keydown', { _self: @ }, @keyDown);
 
-App.NoteEditView = Ember.View.extend
+App.NoteFormView = Ember.View.extend
+    setEditLayout:->
+        $('#sidebar').css('margin-left', '-280px')
+        $('#note').css('margin-left', '0px')
+    resetEditLayout:->
+        $('#sidebar').css('margin-left', '0px')
+        $('#note').css('margin-left', '280px')
+
+App.NoteEditView = App.NoteFormView.extend
     templateName: 'note/edit'
 
     keyDown: (e)->
@@ -35,8 +43,17 @@ App.NoteEditView = Ember.View.extend
         $('#inputName').focus()
         $("#note").on('keydown', { _self: @ }, @keyDown);
 
+        @setEditLayout()
     willDestroyElement: ->
         $('#note').off('keydown', @keyDown)
+        @resetEditLayout()
+
+App.NotesNewView = App.NoteFormView.extend
+    didInsertElement:->
+        @setEditLayout()
+
+    willDestroyElement: ->
+        @resetEditLayout()
 
 App.NotesView = Ember.View.extend
     templateName: 'notes'
