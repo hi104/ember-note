@@ -4,6 +4,7 @@ App.NoteController = Em.ObjectController.extend
 
 App.NoteShowController = Em.ObjectController.extend
     needs:['notes']
+
     actions:
         delete:(note)->
             @get('controllers.notes').send('delete', note)

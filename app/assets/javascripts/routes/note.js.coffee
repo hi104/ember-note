@@ -10,7 +10,6 @@ App.NoteRoute = Ember.Route.extend(
         @._super()
         setTimeout(@adjustListScroll, 0)
 
-
     #better code move to view ?
     adjustListScroll:->
         el = $('#note-list .active')[0]

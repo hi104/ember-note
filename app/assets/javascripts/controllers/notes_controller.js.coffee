@@ -21,10 +21,10 @@ App.NotesController = Em.ArrayController.extend(
     needs: "note",
     sortProperties: ['updated_at']
     sortAscending: false
-    tagText:""
+    tagText: ""
     queryTags: Ember.A()
-    queryCategory:''
-    sortProperty:App.noteSortPropetyies[0]
+    queryCategory: ''
+    sortProperty: App.noteSortPropetyies[0]
     searching: false
 
     changeSortPrperty:(->
@@ -32,11 +32,11 @@ App.NotesController = Em.ArrayController.extend(
         @set('sortProperties',[sort.key])
         @set('sortAscending',sort.asc)
     ).observes('sortProperty')
+
     changeQueryTags:(->
         unless @get('searching')
             Ember.run.debounce(@, @transitionUseQuery, 30)
     ).observes('queryTags.@each')
-
 
     transitionUseQuery:()->
         queryParams = {}
@@ -48,9 +48,7 @@ App.NotesController = Em.ArrayController.extend(
         $('#note-list').scrollTop(0) #NOTE direct access
 
     satQueryParams:(queryParams)->
-
         @set('queryCategory', queryParams["category"])
-
         query_tag = queryParams["tag"]
 
         if (typeof query_tag == 'string') and query_tag != ""
@@ -74,14 +72,13 @@ App.NotesController = Em.ArrayController.extend(
         @set('content.filterFunction', (e) -> false)
 
     search:(queryParams)->
-
         #better? suspend observe
         @set('searching', true)
         @satQueryParams(queryParams)
         @set('searching', false)
 
         # tag_names =  @get('queryTags').filter((e) -> e.match(/^#/)).map((e) -> e.replace('#',''))
-        tag_names =  @get('queryTags').map((e)->e)
+        tag_names = @get('queryTags').map((e)->e)
         tag_ids = @getTagIds(tag_names)
 
         tag_filter_fn = (note)->
@@ -112,7 +109,6 @@ App.NotesController = Em.ArrayController.extend(
 
     actions:
         edit:->
-            # model = @controllerFor('note').get('model')
             model = @get('controllers.note').get('model')
             @transitionToRoute('note.edit', model)
 
@@ -140,25 +136,24 @@ App.NotesController = Em.ArrayController.extend(
                 )
             else
                 return
+
         changeSelection:(params)->
             model = @get('controllers.note').get('model')
             notes = @get('arrangedContent')
             unless model
                 index = 0
             else
-                index = notes.indexOf(model)  + params.direction
+                index = notes.indexOf(model) + params.direction
 
             note = notes.objectAt(index)
             if note
                 @transitionToRoute('note.show', note.get('id'))
 
-
 )
 
 App.NotesNewController = Em.ObjectController.extend(
-
     setNewModel:->
-        @set('model', @store.createRecord('note',{name:""}))
+        @set('model', @store.createRecord('note', {name:""}))
 
     back:->
         @transitionToRoute('notes')

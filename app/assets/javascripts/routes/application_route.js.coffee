@@ -4,6 +4,7 @@ App.ApplicationRoute = Ember.Route.extend(
             notes : @store.find('note'),
             tags : @store.find('tag')
         )
+
     setupController:(controller, model)->
         App.set('tags', model.tags)
 
