@@ -37,6 +37,8 @@ App.AceEditorView = Ember.View.extend({
             this.editor = null;
         }
     },
+
+    // TODO jquery selector 
     syncScroll: function () {
         var editor = this.editor;
         var previewContent = $('#preview-content');
@@ -66,7 +68,9 @@ App.AceEditorView = Ember.View.extend({
                 aceEditorView.skipContentChangeEvent = false;
             });
 
-            aceEditorView.editor.getSession().on('changeScrollTop', aceEditorView.syncScroll.bind(aceEditorView));
+            aceEditorView.editor.getSession().on('changeScrollTop', function(e){
+                aceEditorView.syncScroll();
+            });
         };
 
         if (window.ace) {

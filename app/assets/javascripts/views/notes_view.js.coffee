@@ -24,9 +24,24 @@ App.NoteFormView = Ember.View.extend
     setEditLayout:->
         $('#sidebar').css('margin-left', '-280px')
         $('#note').css('margin-left', '0px')
+
     resetEditLayout:->
         $('#sidebar').css('margin-left', '0px')
         $('#note').css('margin-left', '280px')
+
+    syncScroll:->
+        console.log('syncScroll')
+        note_textarea = $('#inputNote')
+        previewContent = $('#preview-content')
+        editorHeight =  note_textarea[0].scrollHeight
+        previewHeight = previewContent.height()
+        ratio = note_textarea.scrollTop() / editorHeight;
+        $('#preview').scrollTop(ratio * previewHeight)
+
+    setSyncScroll:()->
+        $('#inputNote').scroll(=>
+            @syncScroll()
+        )
 
 App.NoteEditView = App.NoteFormView.extend
     templateName: 'note/edit'
@@ -44,6 +59,8 @@ App.NoteEditView = App.NoteFormView.extend
         $("#note").on('keydown', { _self: @ }, @keyDown);
 
         @setEditLayout()
+        @setSyncScroll()
+
     willDestroyElement: ->
         $('#note').off('keydown', @keyDown)
         @resetEditLayout()
@@ -51,6 +68,7 @@ App.NoteEditView = App.NoteFormView.extend
 App.NotesNewView = App.NoteFormView.extend
     didInsertElement:->
         @setEditLayout()
+        @setSyncScroll()
 
     willDestroyElement: ->
         @resetEditLayout()

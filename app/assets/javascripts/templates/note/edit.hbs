@@ -9,16 +9,15 @@
       {{view Ember.TextField id="inputTag" class="form-input-control" valueBinding="tag_list" placeholder='Tags'}}
     </div>
   </div>
-    {{!--
-    <label for="inputNote" class="control-label">Note</label>
-    <p class='error-message'><span>{{errors.content}}</span></p>
-    {{view Ember.TextArea rows="15" id="inputNote" class="form-control ace-wrapper" valueBinding="content.content"}}
-    --}}
-    {{!----}}
-    {{view App.AceEditorView contentBinding="content.content"}}
 
+  <div class='note-edit-textarea-wrap'>
+    {{view Ember.TextArea id="inputNote" class="note-edit-textarea" valueBinding="content.content" placeholder='Note'}}
+  </div>
+    {{!--
+    {{view App.AceEditorView contentBinding="content.content"}}
+--}}
     <div class="form-group note-edit-bottom-control">
-      <div class="col-sm-10">
+      <div class="">
         {{#if isSaving}}
           <button type="submit" class="btn btn-primary">
             Saving....
