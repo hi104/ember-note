@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require marked.js
 //= require moment.min.js
+//= require ace.js
+//= require mode-markdown.js
+//= require theme-chrome.js
 //= require ember_application

@@ -19,7 +19,6 @@ App.NoteEditController = Em.ObjectController.extend(
         save:()->
             model = @get('model')
             model.save().then((data)=>
-
                 model.cleanTaggings()
                 Bootstrap.GNM.push('SUCCESS!', 'Save Success', 'success');
                 @back()
