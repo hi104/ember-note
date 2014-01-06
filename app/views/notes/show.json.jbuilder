@@ -1,7 +1,7 @@
 note = @note
 json.note do
   json.extract! note, :id, :name, :content, :created_at, :updated_at
-  json.tag_list((note.taggings.map do |e| e.tag.name end).join(', '))
+  json.tag_list(note.tag_list_string)
   json.tagging_ids do
     json.array!(note.taggings.map(&:id))
   end
