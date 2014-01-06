@@ -30,7 +30,6 @@ App.NoteFormView = Ember.View.extend
         $('#note').css('margin-left', '280px')
 
     syncScroll:->
-        console.log('syncScroll')
         note_textarea = $('#inputNote')
         previewContent = $('#preview-content')
         editorHeight =  note_textarea[0].scrollHeight
