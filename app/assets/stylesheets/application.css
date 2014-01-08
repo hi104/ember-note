@@ -12,4 +12,6 @@
  *= require font-awesome
  *= require ember-addons.bs_for_ember/dist/css/bs-growl-notifications.min.css
  *= require style
+ *= require markdown_table
+ *= require bootstrap-tagsinput
  */

@@ -18,4 +18,7 @@
 //= require ace.js
 //= require mode-markdown.js
 //= require theme-chrome.js
+//= require bootstrap-tagsinput.js
+//= require typeahead.js
+//= require typeahead_ext.js
 //= require ember_application

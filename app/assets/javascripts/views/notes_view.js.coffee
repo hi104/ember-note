@@ -21,7 +21,9 @@ App.NoteShowView = Ember.View.extend
         el.on('keydown', { _self: @ }, @keyDown);
 
 App.NoteFormView = Ember.View.extend
+
     setEditLayout:->
+        #TODO better use class?
         $('#sidebar').css('margin-left', '-280px')
         $('#note').css('margin-left', '0px')
 
@@ -42,6 +44,21 @@ App.NoteFormView = Ember.View.extend
             @syncScroll()
         )
 
+    setTagInput:()->
+        content = @get('controller').get('content')
+        $('#noteTagInput').val(content.get('tag_list'))
+        $('#noteTagInput').tagsinput({
+            tagClass: (item) -> 'label label-default'
+            ,
+            typeahead: {
+                source: App.tags.map((e) -> e.get('name'))
+            }
+        })
+
+        $('#noteTagInput').on('change', ->
+            content.set('tag_list', $(@).val())
+        )
+
 App.NoteEditView = App.NoteFormView.extend
     templateName: 'note/edit'
 
@@ -57,6 +74,7 @@ App.NoteEditView = App.NoteFormView.extend
         $('#inputName').focus()
         $("#note").on('keydown', { _self: @ }, @keyDown);
 
+        @setTagInput()
         @setEditLayout()
         @setSyncScroll()
 
@@ -66,6 +84,7 @@ App.NoteEditView = App.NoteFormView.extend
 
 App.NotesNewView = App.NoteFormView.extend
     didInsertElement:->
+        @setTagInput()
         @setEditLayout()
         @setSyncScroll()
 

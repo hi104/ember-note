@@ -2,20 +2,17 @@
   <form class="note-edit-form" role="form">
   <div class='note-top-control-wrap'>
     <div class='form-input-control-wrap'>
-      {{view Ember.TextField id="inputName" class="form-input-control" valueBinding="name" placeholder='Name'}}
+      {{view Ember.TextField id="inputName" class="form-input-control" valueBinding="name" placeholder='Name' }}
       <p style='display:none' class='error-message' ><span>{{errors.name}}</span></p>
     </div>
-    <div class='form-input-control-wrap'> <i class="fa fa-tags"></i>
-      {{view Ember.TextField id="inputTag" class="form-input-control" valueBinding="tag_list" placeholder='Tags'}}
+    <div class='form-input-control-wrap'>
+      <input id='noteTagInput' type='text' style='position:absolute;left:30px;' placeholder='add tag'>
     </div>
   </div>
 
   <div class='note-edit-textarea-wrap'>
     {{view Ember.TextArea id="inputNote" class="note-edit-textarea" valueBinding="content.content" placeholder='Note'}}
   </div>
-    {{!--
-    {{view App.AceEditorView contentBinding="content.content"}}
---}}
     <div class="form-group note-edit-bottom-control">
       <div class="">
         {{#if isSaving}}

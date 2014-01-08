@@ -95,7 +95,9 @@ App.NotesController = Em.ArrayController.extend(
             names.any((e) ->
                 escaped = e.replace(/\W/g,"\\$&")
                 reg = new RegExp(escaped, 'ig')
-                note._data['name'].match(reg)
+                note_name = note._data['name']
+                return false unless note_name
+                note_name.match(reg)
             )
 
         filters = Ember.A()

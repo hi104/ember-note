@@ -22,8 +22,11 @@ html,body {
     right:0;
 }
 
-.tag-input-view{
+.search-input-view{
     display:inline;
+    input{
+        padding:2px 6px;
+    }
 }
 
 .select-sort-notes {
@@ -52,7 +55,7 @@ html,body {
 
 .app-header{
     background:#eee;
-    padding-top:8px;
+    padding-top:4px;
     padding-left:15px;
     height:40px;
     border-bottom:1px solid #ccc;
@@ -180,7 +183,7 @@ html,body {
 
 .ace-wrapper {
     position: absolute;
-    top:70px;
+    top:100px;
     left:0px;
     bottom:65px;
     width:100%;
@@ -201,28 +204,25 @@ html,body {
 
 .note-top-control-wrap{
     background:#eee;
-    height:65px;
+    padding:10px 0px;
+
 }
 
 .form-input-control-wrap{
-    height:30px;
     position:relative;
-    padding:5px;
+    padding:3px 15px;
 }
 
 .form-input-control{
     margin:0px;
     border:1px solid #ccc;
-    padding:2px;
-    position:absolute;
-    right:10px;
-    left:30px;
-    width:90%;
+    padding:4px 6px;
+    width:100%;
 }
 
 .note-edit-textarea-wrap{
     position: absolute;
-    top:65px;
+    top:95px;
     left:0px;
     bottom:65px;
     right:0px;
@@ -240,57 +240,18 @@ html,body {
     resize: none;
     border-bottom:1px solid #ccc;
     border-top:1px solid #ccc;
-
 }
 
-
-table {
+.form-note-input-tag{
+    border:1px solid #ccc;
+    input {
+        border:0px;
+    }
 }
 
-table > thead > tr > th,
-table > tbody > tr > th,
-table > tfoot > tr > th,
-table > thead > tr > td,
-table > tbody > tr > td,
-table > tfoot > tr > td {
-  padding: 8px;
-  line-height: 1.428571429;
-  vertical-align: top;
-  border-top: 1px solid #dddddd;
-}
-
-table > thead > tr > th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #dddddd;
-}
-
-table > caption + thead > tr:first-child > th,
-table > colgroup + thead > tr:first-child > th,
-table > thead:first-child > tr:first-child > th,
-table > caption + thead > tr:first-child > td,
-table > colgroup + thead > tr:first-child > td,
-table > thead:first-child > tr:first-child > td {
-  border-top: 0;
-}
-
-table > tbody + tbody {
-  border-top: 2px solid #dddddd;
-}
-
-table {
-  border: 1px solid #dddddd;
-}
-
-table > thead > tr > th,
-table > tbody > tr > th,
-table > tfoot > tr > th,
-table > thead > tr > td,
-table > tbody > tr > td,
-table > tfoot > tr > td {
-  border: 1px solid #dddddd;
-}
-
-table > thead > tr > th,
-table > thead > tr > td {
-  border-bottom-width: 2px;
+//
+// bootstrap-tagsinput.css
+// append style
+.bootstrap-tagsinput{
+    width:100%;
 }
