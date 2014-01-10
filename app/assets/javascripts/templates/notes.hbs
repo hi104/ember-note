@@ -23,43 +23,41 @@
     </div>
     <div id="note-list" tabindex="0" class='fill' >
       <table class="table table-hover">
-        <tr style="display:none" comments="!!!!!! for bug when add controller first note after with none mactch filter !!!!!">
-          <td></td>
-          <td></td>
-        </tr>
-        {{#each note in controller}}
+        <tbody>
+          {{#each note in controller}}
 
-          {{#link-to "note.show" note.id tagName="tr" currentWhen="note" class='note-row'}}
-          <td >
-            <div>
-              <span class='note-name'>
-                {{note.name}}
-              </span>
-              <span class='note-date'>
-                {{note.updatedAtFromNow}}
-              </span>
-            </div>
-            <div>
-              {{#each tagging in note.taggings}}
-                <span class="label label-default" style='margin-right:3px;'>
-                  {{tagging.tag.name}}
+            {{#link-to "note.show" note.id tagName="tr" currentWhen="note" class='note-row'}}
+            <td >
+              <div>
+                <span class='note-name'>
+                  {{note.name}}
                 </span>
-              {{/each}}
-            </div>
+                <span class='note-date'>
+                  {{note.updatedAtFromNow}}
+                </span>
+              </div>
+              <div>
+                {{#each tagging in note.taggings}}
+                  <span class="label label-default" style='margin-right:3px;'>
+                    {{tagging.tag.name}}
+                  </span>
+                {{/each}}
+              </div>
 
-            <div class='note-control'>
-              {{#link-to 'note.edit' note.id class='btn btn-default btn-xs' bubbles=false}}
-              <span class='glyphicon glyphicon-edit'></span>
-              {{/link-to}}
-              <button class='btn btn-default btn-xs' {{action 'delete' note bubbles=false}} >
-                <span class='glyphicon glyphicon-trash'></span>
-              </button>
-            </div>
-          </td>
-          {{/link-to}}
-        {{else}}
-          <tr><td> none item</td></tr>
-        {{/each}}
+              <div class='note-control'>
+                {{#link-to 'note.edit' note.id class='btn btn-default btn-xs' bubbles=false}}
+                <span class='glyphicon glyphicon-edit'></span>
+                {{/link-to}}
+                <button class='btn btn-default btn-xs' {{action 'delete' note bubbles=false}} >
+                  <span class='glyphicon glyphicon-trash'></span>
+                </button>
+              </div>
+            </td>
+            {{/link-to}}
+          {{else}}
+            <tr><td> none item</td></tr>
+          {{/each}}
+        </tbody>
       </table>
     </div>
   </div>
