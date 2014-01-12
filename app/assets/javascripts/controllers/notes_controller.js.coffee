@@ -166,7 +166,10 @@ App.NotesNewController = Em.ObjectController.extend(
             model.save(@store).then((data)=>
                 @transitionToRoute('note.show', model.get('id'))
             ,(result) =>
+                if (result instanceof DS.InvalidError)
 
+                else
+                    Bootstrap.GNM.push('Error!', result.statusText, 'error');
             )
 
         cancel:()->

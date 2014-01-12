@@ -24,7 +24,7 @@ App.NoteEditController = Em.ObjectController.extend(
                 @back()
             ,(result) =>
                 if not (result instanceof DS.InvalidError)
-                    Bootstrap.GNM.push('Error!',  + result.statusText, 'danger');
+                    Bootstrap.GNM.push('Error!',  result.statusText, 'danger');
             )
 
         cancel:()->

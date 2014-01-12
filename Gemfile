@@ -32,6 +32,12 @@ gem 'ember-source', '1.2.0'
 gem 'acts-as-taggable-on'
 gem 'font-awesome-sass'
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

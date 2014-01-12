@@ -1,4 +1,3 @@
-// over ride
 $.fn.typeahead.Constructor.prototype.render =  function (items) {
     var that = this;
 
@@ -9,7 +8,7 @@ $.fn.typeahead.Constructor.prototype.render =  function (items) {
     });
 
     // comment out for free tag input
-    // items.first().addClass('active') 
+    // items.first().addClass('active')
     this.$menu.html(items);
     return this;
 };

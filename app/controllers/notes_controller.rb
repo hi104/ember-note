@@ -1,9 +1,15 @@
+class User::NotAuthorized < Exception
+end
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
   respond_to :html, :json
 
+  rescue_from User::NotAuthorized, with: :user_not_authorized
+
   def index
-    @notes = Note.all
+    @notes = current_user.notes
+    # @notes = Note.all
   end
 
   def show
@@ -18,6 +24,7 @@ class NotesController < ApplicationController
 
   def create
     @note = Note.new(note_params)
+    @note.user = current_user
     if @note.save
       render json: render_to_string( template:'notes/show.json.jbuilder')
     else
@@ -42,8 +49,18 @@ class NotesController < ApplicationController
   end
 
   private
+
+    def check_user_note!(note)
+      raise User::NotAuthorized if note.user_id != current_user.id
+    end
+
+    def user_not_authorized
+      render :json => {:error => "error user_not_authorized"}, :status => 401
+    end
+
     def set_note
       @note = Note.includes(:taggings => [:tag]).find(params[:id])
+      check_user_note!(@note)
     end
 
     def note_params

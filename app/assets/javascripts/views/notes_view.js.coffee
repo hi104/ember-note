@@ -55,6 +55,15 @@ App.NoteFormView = Ember.View.extend
             }
         })
 
+        #add tag when input blur
+        tags_input = $('#noteTagInput').data('tagsinput')
+        tags_input.$input.on('blur', =>
+            $input = tags_input.$input
+            if $input.val().length > 0
+                tags_input.add($input.val())
+                $input.val('')
+        )
+
         $('#noteTagInput').on('change', ->
             content.set('tag_list', $(@).val())
         )
