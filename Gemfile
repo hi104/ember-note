@@ -37,6 +37,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 
+gem 'pg'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
