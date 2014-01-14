@@ -26,3 +26,5 @@ vendor/assets/bower_components
 
 # omniauth
 config/initializers/omniauth.rb
+
+node_modules
