@@ -59,7 +59,9 @@ App.SearchInputView = App.TagInputView.extend
         )
 
         $(@get('element')).find('input').typeahead({
-            source: App.tags.map((e) -> e.get('name'))
+            source: ->
+                App.tags.map((e) -> e.get('name'))
+
             updater:(item) ->
                 self.addTag(item)
                 self.set('tagText', '')
