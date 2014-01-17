@@ -8,8 +8,7 @@ class NotesController < ApplicationController
   rescue_from User::NotAuthorized, with: :user_not_authorized
 
   def index
-    @notes = current_user.notes
-    # @notes = Note.all
+    @notes = current_user.notes.includes(:taggings => :tag)
   end
 
   def show

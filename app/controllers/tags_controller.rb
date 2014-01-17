@@ -2,9 +2,8 @@ class TagsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @tags = ActsAsTaggableOn::Tag.includes([:taggings]).find_all do |e|
-      e.taggings.count > 0
-    end
+    tag_ids = current_user.notes.joins(:tags).select("tags.id").map(&:id)
+    @tags = ActsAsTaggableOn::Tag.find(tag_ids)
     respond_with @tags
   end
 
