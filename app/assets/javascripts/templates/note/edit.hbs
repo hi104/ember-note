@@ -20,10 +20,19 @@
             Saving....
           </button>
         {{else}}
-          <button {{action 'save'}} type="submit" class="btn btn-primary">
-            Save
-          </button>
+          {{#if isDirty}}
+            <button {{action 'save'}} type="submit" class="btn btn-primary">
+              {{#if isNew}}
+                Create
+              {{else}}
+                Save Changes
+              {{/if }}
+            </button>
+          {{else}}
+            <button class="btn btn-success">Saved</button>
+          {{/if }}
         {{/if }}
+
         <button {{action 'cancel'}} type="submit" class="btn btn-default">Cancel</button>
       </div>
     </div>

@@ -21,7 +21,6 @@ App.NoteEditController = Em.ObjectController.extend(
             model.save().then((data)=>
                 model.cleanTaggings()
                 Bootstrap.GNM.push('SUCCESS!', 'Save Success', 'success');
-                @back()
             ,(result) =>
                 if not (result instanceof DS.InvalidError)
                     Bootstrap.GNM.push('Error!',  result.statusText, 'danger');
