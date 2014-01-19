@@ -164,6 +164,7 @@ App.NotesNewController = Em.ObjectController.extend(
         save:()->
             model = @get('model')
             model.save(@store).then((data)=>
+                Bootstrap.GNM.push('SUCCESS!', 'Create Success', 'success');
                 @transitionToRoute('note.show', model.get('id'))
             ,(result) =>
                 if (result instanceof DS.InvalidError)
