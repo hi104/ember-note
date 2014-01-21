@@ -5,13 +5,21 @@ markdown note application
 
 This is my ember.js practice
 
-# install
+## install
 
 ```
 bundle install
 bower install
 rake db:migrate
 ```
+create .env and edit for initializers/omniauth.rb
+
+## heroku config
+```
+heroku config:set GITHUB_KEY="xxxxxxxxxxxxxxxx"
+heroku config:set GITHUB_SECRET"xxxxxxxxxxxxxxxx"
+```
+use in initializers/omniauth.rb
 
 ## using
 - rails 4.0.1
