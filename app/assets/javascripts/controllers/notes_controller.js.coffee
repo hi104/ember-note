@@ -24,7 +24,7 @@ App.NotesController = Em.ArrayController.extend(
     tagText: ""
     queryTags: Ember.A()
     queryCategory: ''
-    sortProperty: App.noteSortPropetyies[0]
+    sortProperty: null
     searching: false
 
     changeSortPrperty:(->

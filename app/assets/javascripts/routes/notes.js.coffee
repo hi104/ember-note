@@ -8,6 +8,8 @@ App.NotesRoute = Ember.Route.extend(
 
     setupController:(controller, model, queryParams)->
         @._super.apply(@, arguments);
+        if not controller.get('sortProperty')
+            controller.set('sortProperty', App.noteSortPropetyies[0])
         controller.search(queryParams)
 )
 
