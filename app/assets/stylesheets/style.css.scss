@@ -40,7 +40,12 @@ html,body {
     &:focus{
         border-top:3px solid #eee;
     }
+    table{
+        border:0px;
+    }
     td{
+        border:0px;
+        border-top: 1px solid #dddddd;
         padding:10px 15px;
     }
     span.note-name{
