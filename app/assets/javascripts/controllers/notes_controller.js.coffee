@@ -1,14 +1,14 @@
 #NOTE better move to model
 App.noteSortPropetyies = [
     {
-        key:'updated_at',
-        name:'updated_at',
-        asc:false
-    },
-    {
         key:'name',
         name:'name',
         asc:true
+    },
+    {
+        key:'updated_at',
+        name:'updated_at',
+        asc:false
     },
     {
         key:'created_at',
