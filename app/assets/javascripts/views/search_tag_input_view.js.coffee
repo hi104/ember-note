@@ -47,7 +47,7 @@ App.SearchInputView = App.TagInputView.extend
                 controller = self.get('controller')  # direct access another controller
                 items = controller.controllerFor('notes').get('arrangedContent')
                 item = items.objectAt(0)
-                controller.transitionToRoute('note.show', item.get('id')) if item
+                controller.transitionToRoute('note.index', item.get('id')) if item
 
             if e.keyCode == 8 # back space
                 if e.target.selectionStart == 0

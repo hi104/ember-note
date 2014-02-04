@@ -28,11 +28,10 @@ App.NoteRoute = Ember.Route.extend(
                 list_el.scrollTop(scroll_top + position.top - list_height + adjust)
 )
 
-App.NoteShowRoute = Ember.Route.extend(
+App.NoteIndexRoute = Ember.Route.extend(
     setupController:(controller, model)->
         @._super.apply(@, arguments)
         @controller.set('model', @controllerFor('note').get('model'))
-
 )
 
 App.NoteEditRoute = Ember.Route.extend(

@@ -128,7 +128,7 @@ App.NotesController = Em.ArrayController.extend(
                         if tag
                             tag.transitionTo('deleted.saved');
                     if next_note
-                        @transitionToRoute('note.show', next_note.get('id'))
+                        @transitionToRoute('note.index', next_note.get('id'))
                     else
                         @transitionToRoute('notes')
 
@@ -149,7 +149,7 @@ App.NotesController = Em.ArrayController.extend(
 
             note = notes.objectAt(index)
             if note
-                @transitionToRoute('note.show', note.get('id'))
+                @transitionToRoute('note.index', note.get('id'))
 
 )
 
@@ -165,7 +165,7 @@ App.NotesNewController = Em.ObjectController.extend(
             model = @get('model')
             model.save(@store).then((data)=>
                 Bootstrap.GNM.push('SUCCESS!', 'Create Success', 'success');
-                @transitionToRoute('note.show', model.get('id'))
+                @transitionToRoute('note.index', model.get('id'))
             ,(result) =>
                 if (result instanceof DS.InvalidError)
 

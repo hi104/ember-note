@@ -2,7 +2,7 @@ App.NoteController = Em.ObjectController.extend
     deactivate: ->
         @get('controller').set('model', null)
 
-App.NoteShowController = Em.ObjectController.extend
+App.NoteIndexController = Em.ObjectController.extend
     needs:['notes']
 
     actions:
@@ -12,7 +12,7 @@ App.NoteShowController = Em.ObjectController.extend
 App.NoteEditController = Em.ObjectController.extend(
     back:->
         model = @get('model')
-        @transitionToRoute('note.show', model.get('id'))
+        @transitionToRoute('note.index', model.get('id'))
         $('#note-list').focus()
 
     actions:
