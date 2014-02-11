@@ -1,6 +1,6 @@
 # for more details see: http://emberjs.com/guides/views/
-App.NoteShowView = Ember.View.extend
-    templateName: 'note/show'
+App.NoteIndexView = Ember.View.extend
+    templateName: 'note/index'
 
     keyDown: (e)->
 
