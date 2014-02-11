@@ -14,9 +14,15 @@ App.NotesRoute = Ember.Route.extend(
 )
 
 App.NotesNewRoute = Ember.Route.extend(
+    model:->
+        @store.createRecord('note', {
+            name: "",
+            content: ""
+        }).save()
+
     setupController:(controller, model)->
         @._super.apply(@, arguments)
-        controller.setNewModel()
+        controller.transitionToRoute('note.edit', model.get('id'))
 
     deactivate:->
         model = @controller.get('model')
