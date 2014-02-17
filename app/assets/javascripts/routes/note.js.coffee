@@ -34,6 +34,7 @@ App.NoteIndexRoute = Ember.Route.extend(
         @controller.set('model', @controllerFor('note').get('model'))
 )
 
+
 App.NoteEditRoute = Ember.Route.extend(
     setupController:(controller, model)->
         @._super.apply(@, arguments)

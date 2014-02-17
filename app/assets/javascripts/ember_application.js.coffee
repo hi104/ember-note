@@ -6,7 +6,6 @@
 #= require ember-addons.bs_for_ember/dist/js/bs-notifications.min.js
 #= require ember-addons.bs_for_ember/dist/js/bs-growl-notifications.min.js
 #= require_self
-#= require_tree ./utils
 #= require ember_note
 #
 # for more details see: http://emberjs.com/guides/application/

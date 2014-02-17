@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140112040438) do
+ActiveRecord::Schema.define(version: 20140208012631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "note_attachments", force: true do |t|
+    t.string   "attachment"
+    t.integer  "note_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "note_attachments", ["note_id"], name: "index_note_attachments_on_note_id", using: :btree
 
   create_table "notes", force: true do |t|
     t.string   "name"

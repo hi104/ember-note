@@ -24,6 +24,9 @@ gem 'omniauth-twitter'
 gem 'rails_12factor', group: :production
 gem 'dotenv-rails', :groups => [:development, :test]
 
+gem 'carrierwave'
+gem 'fog', "~> 1.3.1"
+
 group :doc do
   gem 'sdoc', require: false
 end

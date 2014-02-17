@@ -1,0 +1,29 @@
+<h1>Listing note_attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attachment</th>
+      <th>Note</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @note_attachments.each do |note_attachment| %>
+      <tr>
+        <td><%= note_attachment.attachment %></td>
+        <td><%= note_attachment.note %></td>
+        <td><%= link_to 'Show', note_attachment %></td>
+        <td><%= link_to 'Edit', edit_note_attachment_path(note_attachment) %></td>
+        <td><%= link_to 'Destroy', note_attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Note attachment', new_note_attachment_path %>

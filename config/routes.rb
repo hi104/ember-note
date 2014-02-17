@@ -1,4 +1,5 @@
 EmberNote::Application.routes.draw do
+
   get "login/index"
   # devise_for :users
   devise_for :users, :controllers => {
@@ -13,6 +14,10 @@ EmberNote::Application.routes.draw do
   get 'tags' => 'tags#index'
   get "home/index"
   get 'login' => "login#index"
-  resources :notes
+
+  resources :notes do
+    resources :note_attachments
+  end
+
   root to: "home#index"
 end

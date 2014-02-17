@@ -26,4 +26,6 @@ App.Note = DS.Model.extend(
         moment(time).fromNow()
     ).property('updated_at')
 
+    attachmentUploadUrl:()->
+        '/notes/' + @get("id") + '/note_attachments.json'
 )

@@ -44,6 +44,37 @@ App.NoteFormView = Ember.View.extend
             @syncScroll()
         )
 
+    $getInputNote:() ->
+        $('#inputNote')
+
+    setImageUploader:()->
+        $inputNote = @$getInputNote()
+        self = @
+
+        $inputNote.on("drop", (evt) ->
+            evt.stopPropagation()
+            evt.preventDefault()
+
+            files = evt.originalEvent.dataTransfer.files
+            file = files[0]
+            note = self.get('controller').get('model')
+
+            uploader = new NoteAttachmentUploader()
+            uploader.upload(note, file).done((data)->
+                attachment_url = data.attachment.attachment.url
+                note_text = note.get('content')
+                cursorPosition = $inputNote.prop("selectionStart")
+                image_markdown = "![](#{attachment_url})"
+                head = note_text.slice(0, cursorPosition)
+                tail = note_text.slice(cursorPosition)
+                markdown = [head, image_markdown, tail].join("\n")
+                note.set('content', markdown)
+
+            ).fail((data)->
+                console.log(data)
+            )
+        )
+
     setTagInput:()->
         content = @get('controller').get('content')
         $('#noteTagInput').val(content.get('tag_list'))
@@ -86,9 +117,11 @@ App.NoteEditView = App.NoteFormView.extend
         @setTagInput()
         @setEditLayout()
         @setSyncScroll()
+        @setImageUploader()
 
     willDestroyElement: ->
         $('#note').off('keydown', @keyDown)
+        @$getInputNote().off('drop')
         @resetEditLayout()
 
 App.NotesNewView = App.NoteFormView.extend
