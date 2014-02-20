@@ -47,7 +47,7 @@ App.NotesController = Em.ArrayController.extend(
         @transitionToRoute('notes', { queryParams: queryParams})
         $('#note-list').scrollTop(0) #NOTE direct access
 
-    satQueryParams:(queryParams)->
+    setQueryParams:(queryParams)->
         @set('queryCategory', queryParams["category"])
         query_tag = queryParams["tag"]
 
@@ -74,7 +74,7 @@ App.NotesController = Em.ArrayController.extend(
     search:(queryParams)->
         #better? suspend observe
         @set('searching', true)
-        @satQueryParams(queryParams)
+        @setQueryParams(queryParams)
         @set('searching', false)
 
         # tag_names =  @get('queryTags').filter((e) -> e.match(/^#/)).map((e) -> e.replace('#',''))
