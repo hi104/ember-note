@@ -30,7 +30,7 @@
           {{#each note in controller}}
 
             {{#link-to "note.index" note.id tagName="tr" currentWhen="note" class='note-row'}}
-            <td >
+            <td {{bind-attr style=note.rowStyle}}>
               <div>
                 <span class='note-name'>
                   {{note.name}}

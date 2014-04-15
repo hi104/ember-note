@@ -1,20 +1,24 @@
 <div class='note-edit'>
   <form class="note-edit-form" role="form">
-  <div class='note-top-control-wrap'>
-    <div class='form-input-control-wrap'>
-      {{view Ember.TextField id="inputName" class="form-input-control" valueBinding="name" placeholder='Name' }}
-      <p style='display:none' class='error-message' ><span>{{errors.name}}</span></p>
-    </div>
-    <div class='form-input-control-wrap'>
-      <input id='noteTagInput' type='text' style='position:absolute;left:30px;' placeholder='add tag'>
-    </div>
-  </div>
+    <div class='note-top-control-wrap'>
+      <div class='form-input-control-wrap'>
+        {{view Ember.TextField id="inputName" class="form-input-control" valueBinding="name" placeholder='Name' }}
+        <p style='display:none' class='error-message'>
+          <span>{{errors.name}}</span>
+        </p>
 
-  <div class='note-edit-textarea-wrap'>
-    {{view Ember.TextArea id="inputNote" class="note-edit-textarea" valueBinding="content.content" placeholder='Note'}}
-  </div>
+      </div>
+      <div class='form-input-control-wrap'>
+        <input id='noteTagInput' type='text' style='position:absolute;left:30px;' placeholder='add tag'>
+      </div>
+    </div>
+
+    <div class='note-edit-textarea-wrap'>
+      {{view Ember.TextArea id="inputNote" class="note-edit-textarea" valueBinding="content.content" placeholder='Note'}}
+    </div>
     <div class="form-group note-edit-bottom-control">
-      <div class="">
+      <div class="row">
+        <div class="col-md-6">
         {{#if isSaving}}
           <button type="submit" class="btn btn-primary">
             Saving....
@@ -34,6 +38,14 @@
         {{/if }}
 
         <button {{action 'cancel'}} type="submit" class="btn btn-default">Cancel</button>
+        </div>
+
+        <div style="float:right;padding-right:20px">
+          label color:
+          {{view Ember.TextField id="inputNoteColor"
+          type="color"
+          valueBinding="content.label_color"}}
+        </div>
       </div>
     </div>
   </form>
@@ -41,6 +53,6 @@
 <div id='preview' class='preview'>
   <div id='preview-content'>
 
-  {{markdown content.content}}
+    {{markdown content.content}}
   </div>
 </div>

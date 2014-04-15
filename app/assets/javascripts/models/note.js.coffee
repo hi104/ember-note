@@ -1,6 +1,7 @@
 App.Note = DS.Model.extend(
     name: DS.attr 'string'
     content: DS.attr 'string'
+    label_color: DS.attr 'string'
     created_at: DS.attr 'date'
     updated_at: DS.attr 'date'
     tag_list: DS.attr 'string'
@@ -27,5 +28,9 @@ App.Note = DS.Model.extend(
     ).property('updated_at')
 
     attachmentUploadUrl:()->
-        '/notes/' + @get("id") + '/note_attachments.json'
+        '/notes/' + @get('id') + '/note_attachments.json'
+
+    rowStyle:(->
+        'border-left-color:' + @get('label_color')
+    ).property('label_color')
 )
