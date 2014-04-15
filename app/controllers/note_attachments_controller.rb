@@ -1,8 +1,11 @@
 class NoteAttachmentsController < ApplicationController
   layout "login"
+
   before_action :set_note_attachment, only: [:destroy]
   before_action :set_note
 
+  # POST /note_attachments
+  # POST /note_attachments.json
   def create
     @note_attachment = NoteAttachment.new(note_attachment_params)
     @note_attachment.note = @note

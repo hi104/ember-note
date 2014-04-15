@@ -11,7 +11,6 @@
 // about supported directives.
 //= require jquery-2.0.0.min.js
 //= require jquery_ujs
-//= require turbolinks
 //= require marked.js
 //= require moment.min.js
 //= require ace.js
