@@ -13,7 +13,8 @@ EmberNote::Application.routes.draw do
     get 'sign_out', :to => 'users/sessions#destroy'
   end
 
-  get 'tags' => 'tags#index'
+  resources :tags
+
   get "home/index"
   get 'login' => "login#index"
 

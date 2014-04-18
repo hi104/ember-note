@@ -3,13 +3,13 @@ json.notes do
     json.extract! note, :id, :name, :content, :label_color, :created_at, :updated_at
     json.tag_list(note.tag_list_string)
     json.tagging_ids do
-      json.array!(note.taggings.map(&:id))
+      json.array!(note.note_taggings.map(&:id))
     end
   end
 end
 
 taggings = @notes.flat_map do |e|
-  e.taggings
+  e.note_taggings
 end.uniq
 
-json.partial! 'taggings', taggings: taggings
+json.partial! 'note_taggings', taggings: taggings

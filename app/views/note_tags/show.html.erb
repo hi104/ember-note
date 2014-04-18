@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @note_tag.name %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @note_tag.color %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @note_tag.user %>
+</p>
+
+<%= link_to 'Edit', edit_note_tag_path(@note_tag) %> |
+<%= link_to 'Back', note_tags_path %>

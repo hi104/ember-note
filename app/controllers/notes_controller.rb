@@ -1,5 +1,6 @@
 class User::NotAuthorized < Exception
 end
+
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
@@ -24,6 +25,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new(note_params)
     @note.user = current_user
+    @note.note_tags = NoteTag.create_from_string(@note.user, note_params[:tag_list])
     if @note.save
       render json: render_to_string( template:'notes/show.json.jbuilder')
     else
@@ -33,6 +35,7 @@ class NotesController < ApplicationController
 
   def update
     @note.update_attributes(note_params)
+    @note.note_tags = NoteTag.create_from_string(@note.user, note_params[:tag_list])
     if @note.valid?
       @note_updated = Note.includes(:taggings => [:tag]).find(@note.id)
       @note =  @note_updated #for updated tag
