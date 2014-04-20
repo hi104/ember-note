@@ -5,7 +5,11 @@ markdown note application
 
 This is my ember.js practice
 
-## install
+## Demo
+
+https://ember-note-demo.herokuapp.com
+
+## Install
 
 ```
 bundle install
