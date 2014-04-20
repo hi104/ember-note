@@ -1,0 +1,61 @@
+<h1 class="page-header">
+  Edit Tag
+</h1>
+
+<div class="col-sm-6">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for=""  class="col-sm-4 control-label">Name</label>
+      <div class="col-sm-8">
+        {{view Ember.TextField valueBinding="name" class="form-control"}}
+        <p>
+          {{#if errors.name}}
+            {{#each error in errors.name}}
+              {{error}}
+            {{/each}}
+          {{/if}}
+        </p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="" class="col-sm-4 control-label">Color</label>
+      <div class="col-sm-8">
+        {{view Ember.TextField id="inputTagColor"
+        type="color"
+        valueBinding="color" class="form-control"}}
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="" class="col-sm-4 control-label">Preview</label>
+      <div class="col-sm-8">
+
+        <span class="label label-default tag-label" {{bind-attr style=styleColor}}>
+          {{name}}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-4 col-sm-8">
+
+        {{#if isSaving}}
+          <button type="submit" class="btn btn-primary">
+            Saving....
+          </button>
+        {{else}}
+          {{#if isDirty}}
+            <button {{action 'save'}} type="submit" class="btn btn-primary">
+              Save Changes
+            </button>
+          {{else}}
+            <button class="btn btn-success">Saved</button>
+          {{/if }}
+        {{/if }}
+
+        {{#link-to 'tags.index' tagName="button" class='btn btn-default'}}
+        Cancel
+        {{/link-to}}
+
+      </div>
+    </div>
+</div>

@@ -1,8 +1,7 @@
 <div class='app-header'>
   {{view App.SearchInputView tagsBinding='queryTags' tagTextBinding='tagText' }}
-  <div style='float:right;padding-right:20px;'>
-    <a href="/sign_out">sign_out</a>
-  </div>
+
+  {{partial "menu"}}
 </div>
 
 <div class="fill" style="top:40px;">
@@ -41,7 +40,7 @@
               </div>
               <div>
                 {{#each tagging in note.taggings}}
-                  <span class="label label-default" style='margin-right:3px;'>
+                  <span class="label label-default tag-label" {{bind-attr style=tagging.tag.styleColor}}>
                     {{tagging.tag.name}}
                   </span>
                 {{/each}}

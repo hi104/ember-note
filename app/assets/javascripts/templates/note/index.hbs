@@ -5,7 +5,7 @@
         {{name}}
       </span>
       {{#each tagging in taggings}}
-        <span class='tag label label-default'>
+        <span class="label label-default tag-label" {{bind-attr style=tagging.tag.styleColor}}>
           {{tagging.tag.name}}
         </span>
       {{/each}}

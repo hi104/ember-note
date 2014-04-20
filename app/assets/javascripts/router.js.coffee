@@ -7,3 +7,9 @@ App.Router.map () ->
         )
         @route('new')
     )
+
+    @resource('tags', ->
+        @resource('tag',{path: '/:tag_id'}, ->
+            @route('edit', {path:'/edit'})
+        )
+    )

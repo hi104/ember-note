@@ -7,6 +7,9 @@ App.Note = DS.Model.extend(
     tag_list: DS.attr 'string'
     taggings: DS.hasMany 'tagging'
 
+    taggingsString:->
+        @get('taggings').map((e) -> e.get('tag').get('name')).join(", ")
+
     cleanTaggings:->
         self = @
         updated_taggings = @get('taggings')
@@ -33,4 +36,11 @@ App.Note = DS.Model.extend(
     rowStyle:(->
         'border-left-color:' + @get('label_color')
     ).property('label_color')
+
+    cancelEdit: ->
+        if @get('isDirty')
+            @_inFlightAttributes = {}
+            @send('becameValid') if not @get('isValid')
+            @set('errors', null)
+            @rollback()
 )

@@ -27,12 +27,7 @@ App.NoteEditController = Em.ObjectController.extend(
             )
 
         cancel:()->
-            model = @get('model')
-            if model.get('isDirty')
-                model._inFlightAttributes = {}
-                model.send('becameValid') if not model.get('isValid')
-                model.set('errors', null)
-                model.rollback()
+            @get('model').cancelEdit()
             @back()
 
 )

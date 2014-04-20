@@ -1,0 +1,33 @@
+<h1 class="page-header">
+  Tags
+</h1>
+
+<table class="">
+  {{#each tag in controller}}
+    <tr>
+      <td style="width:40px">
+        {{#link-to 'tag.edit' tag.id class='btn btn-default btn-xs' bubbles=false}}
+        <span class='glyphicon glyphicon-edit'></span>
+        {{/link-to}}
+      </td>
+      <td style="width:300px">
+        {{#if tag.isEditing}}
+          {{view Ember.TextField valueBinding="tag.name"}}
+          <button class='btn btn-default btn-xs' {{action 'save' tag}} >
+            <span class='glyphicon glyphicon-save'></span>
+          </button>
+        {{else}}
+          <span class="label label-default tag-label" {{bind-attr style=tag.styleColor}}>
+            {{tag.name}}
+          </span>
+        {{/if}}
+      </td>
+      <td style="width:4px">
+
+        <button class='btn btn-default btn-xs' {{action 'delete' tag bubbles=false}} >
+          <span class='glyphicon glyphicon-trash'></span>
+        </button>
+      </td>
+    </tr>
+  {{/each}}
+</table>

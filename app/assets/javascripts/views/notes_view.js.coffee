@@ -77,7 +77,7 @@ App.NoteFormView = Ember.View.extend
 
     setTagInput:()->
         content = @get('controller').get('content')
-        $('#noteTagInput').val(content.get('tag_list'))
+        $('#noteTagInput').val(content.taggingsString())
         $('#noteTagInput').tagsinput({
             tagClass: (item) -> 'label label-default'
             ,

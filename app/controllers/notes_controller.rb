@@ -9,7 +9,7 @@ class NotesController < ApplicationController
   rescue_from User::NotAuthorized, with: :user_not_authorized
 
   def index
-    @notes = current_user.notes.includes(:taggings => :tag)
+    @notes = current_user.notes.includes(:note_taggings => :note_tag)
   end
 
   def show
@@ -37,7 +37,7 @@ class NotesController < ApplicationController
     @note.update_attributes(note_params)
     @note.note_tags = NoteTag.create_from_string(@note.user, note_params[:tag_list])
     if @note.valid?
-      @note_updated = Note.includes(:taggings => [:tag]).find(@note.id)
+      @note_updated = Note.includes(:note_taggings => [:note_tag]).find(@note.id)
       @note =  @note_updated #for updated tag
       render json: render_to_string( template:'notes/show.json.jbuilder')
     else
@@ -61,7 +61,7 @@ class NotesController < ApplicationController
     end
 
     def set_note
-      @note = Note.includes(:taggings => [:tag]).find(params[:id])
+      @note = Note.includes(:note_taggings => [:note_tag]).find(params[:id])
       check_user_note!(@note)
     end
 
