@@ -3,6 +3,8 @@ class NoteTag < ActiveRecord::Base
   has_many :note_taggings, :dependent => :destroy
   has_many :notes , through: :note_taggings
 
+  validates :name, :uniqueness => {:scope => :user_id}
+
   def self.create_from_string(user, string)
 
     return [] unless string
