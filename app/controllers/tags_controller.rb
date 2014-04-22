@@ -30,7 +30,7 @@ class TagsController < ApplicationController
       end
 
       def check_user_tag!(tag)
-        raise User::NotAuthorized if tag.user_id != current_user.id
+        raise UserNotAuthorized if tag.user_id != current_user.id
       end
 
       def tag_params

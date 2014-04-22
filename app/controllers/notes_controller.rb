@@ -1,12 +1,8 @@
-class User::NotAuthorized < Exception
-end
-
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
   respond_to :html, :json
 
-  rescue_from User::NotAuthorized, with: :user_not_authorized
 
   def index
     @notes = current_user.notes.includes(:note_taggings => :note_tag)
@@ -53,11 +49,7 @@ class NotesController < ApplicationController
   private
 
     def check_user_note!(note)
-      raise User::NotAuthorized if note.user_id != current_user.id
-    end
-
-    def user_not_authorized
-      render :json => {:error => "error user_not_authorized"}, :status => 401
+      raise UserNotAuthorized if note.user_id != current_user.id
     end
 
     def set_note

@@ -1,0 +1,2 @@
+class UserNotAuthorized < Exception
+end
