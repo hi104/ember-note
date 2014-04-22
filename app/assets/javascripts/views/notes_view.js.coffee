@@ -1,4 +1,3 @@
-# for more details see: http://emberjs.com/guides/views/
 App.NoteIndexView = Ember.View.extend
     templateName: 'note/index'
 
@@ -172,10 +171,17 @@ App.NotesView = Ember.View.extend
         if e.keyCode == 13
             self.get('controller').addTag()
 
+    documentKeyDown:(e)->
+        console.log('documentKeyDown', e)
+        if e.keyCode == 76 and e.ctrlKey # key C-l
+            $("#inputSearchNote").focus()
+
     willDestroyElement: ->
         $('#note-list').off('keydown', @keydown)
+        $(document).off('keydown', @documentKeyDown)
 
     didInsertElement: ->
         el = $('#note-list')
         el.on('keydown', { _self: @ }, @keyDown)
         el.focus()
+        $(document).on('keydown', @documentKeyDown)

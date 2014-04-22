@@ -6,5 +6,8 @@
       <span style="top:2px" class="glyphicon glyphicon-remove" ></span>
     </button >
 {{/each}}
-{{view Ember.TextField viewName="inputTag" valueBinding="view.tagText" style="width:20px" placeholder='Search'}}
+{{view Ember.TextField
+       viewName="inputTag" valueBinding="view.tagText"
+       style="width:20px" placeholder='Search'
+       id="inputSearchNote" }}
 {{view.tagsString}}
