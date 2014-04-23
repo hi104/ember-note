@@ -1,5 +1,8 @@
 class Note < ActiveRecord::Base
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   belongs_to :user
   has_many :note_taggings, :dependent => :destroy
   has_many :note_tags , through: :note_taggings

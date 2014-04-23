@@ -27,6 +27,10 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'carrierwave'
 gem 'fog', "~> 1.3.1"
 
+gem 'kaminari'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 group :doc do
   gem 'sdoc', require: false
 end
