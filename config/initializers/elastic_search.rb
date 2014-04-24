@@ -1,1 +1,3 @@
-Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['ELASTIC_SEARCH_URL'], log: true
+if ENV['BONSAI_URL']
+  Elasticsearch::Model.client = Elasticsearch::Client.new url: ENV['BONSAI_URL'], log: true
+end
