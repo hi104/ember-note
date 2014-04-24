@@ -1,6 +1,6 @@
 App.SearchController = Em.ArrayController.extend(
 
-    searchParams: "note"
+    searchParams: ""
     isLoading: false
     meta: null
 
