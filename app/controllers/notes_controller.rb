@@ -3,6 +3,34 @@ class NotesController < ApplicationController
   before_filter :authenticate_user!
   respond_to :html, :json
 
+  def search
+    per_page = 5
+
+    #TODO: better ? filter user in Note.search
+    query =  params[:q]
+    @notes = Note.search(query).records
+                 .where(user: current_user)
+                 .page(params[:page] || 1)
+                 .per(per_page)
+
+    meta = {
+      q: query,
+      pagination: {
+        total_count: @notes.total_count,
+               page: @notes.current_page,
+           per_page: per_page
+      }
+    }
+
+    # note_ids = @notes.map do |e| e["_id"] end
+    note_ids = @notes.map(&:id)
+
+    render json: {
+      notes: note_ids,
+      meta: meta
+    }.as_json
+
+  end
 
   def index
     @notes = current_user.notes.includes(:note_taggings => :note_tag)

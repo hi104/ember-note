@@ -19,6 +19,9 @@ EmberNote::Application.routes.draw do
   get 'login' => "login#index"
 
   resources :notes do
+    collection do
+      get 'search'
+    end
     resources :note_attachments
   end
 

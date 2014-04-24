@@ -1,0 +1,49 @@
+
+<div class='app-header'>
+  {{view Ember.TextField valueBinding="searchParams" }}
+
+  <button class="btn btn-default btn-sm" {{action 'search'}}>
+    {{#if isLoading}}
+      Loading...
+    {{else}}
+      <span style="" class="glyphicon glyphicon-search" ></span>
+    {{/if}}
+  </button>
+
+  {{partial "menu"}}
+
+  {{#if meta}}
+    {{ meta.pagination.total_count}}
+  {{/if}}
+</div>
+
+<div class="search-notes">
+  {{#each note in controller}}
+    <div class="note-row">
+      <div class="note-title">
+        <h2>
+          {{#link-to "note.index" note.id}}
+          {{note.name}}
+          {{/link-to}}
+        </h2>
+        {{#each tagging in note.taggings}}
+          <span class="label label-default tag-label" {{bind-attr style=tagging.tag.styleColor}}>
+            {{tagging.tag.name}}
+          </span>
+        {{/each}}
+        <span>
+          updated at: {{formatDate note.updated_at 'L'}}
+        </span>
+      </div>
+      <div class="note-content">
+        {{markdown note.content.content}}
+      </div>
+    </div>
+  {{/each}}
+  {{#if avaiableMore}}
+  <button class="btn btn-primary btn-lg btn-block" {{action 'more'}}>
+    More
+  </button>
+  {{/if}}
+
+</div>

@@ -85,7 +85,7 @@ App.NoteFormView = Ember.View.extend
             }
         })
 
-        #add tag when input blur
+        #add tag input on blur
         tags_input = $('#noteTagInput').data('tagsinput')
         tags_input.$input.on('blur', =>
             $input = tags_input.$input
@@ -172,7 +172,6 @@ App.NotesView = Ember.View.extend
             self.get('controller').addTag()
 
     documentKeyDown:(e)->
-        console.log('documentKeyDown', e)
         if e.keyCode == 76 and e.ctrlKey # key C-l
             $("#inputSearchNote").focus()
 

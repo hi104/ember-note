@@ -96,10 +96,6 @@ html,body {
     padding:5px 0px;
     border-bottom:1px solid #ccc;
 }
-.note-title{
-    display:inline;
-    font-size:16pt;
-}
 .note-tags{
     padding-left:15px;
     padding-top:5px;
@@ -264,4 +260,25 @@ html,body {
 
 .tag-label{
     margin-right:3px;
+}
+
+.search-notes{
+    .note-row {
+        margin-bottom:10px;
+    }
+    padding: 20px;
+    .note-title{
+        padding:5px;
+        h2 {
+            display:inline;
+            margin-right:5px;
+        }
+        background-color:#eee;
+    }
+    .note-content{
+        padding:10px 0px;
+        max-height:300px;
+        // overflow-y: scroll;
+        overflow: hidden;
+    }
 }

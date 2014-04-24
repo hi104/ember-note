@@ -13,3 +13,5 @@ App.Router.map () ->
             @route('edit', {path:'/edit'})
         )
     )
+
+    @route('search', path: '/search')
