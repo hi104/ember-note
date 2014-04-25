@@ -11,10 +11,6 @@
   </button>
 
   {{partial "menu"}}
-
-  {{#if meta}}
-    {{ meta.pagination.total_count}}
-  {{/if}}
 </div>
 
 <div class="search-notes">
@@ -39,6 +35,12 @@
         {{markdown note.content.content}}
       </div>
     </div>
+  {{else}}
+    {{#if zeroResults}}
+      <div class="well">
+        no results were match you search : {{meta.q}}
+      </div>
+    {{/if}}
   {{/each}}
 
   {{#if avaiableMore}}

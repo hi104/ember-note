@@ -15,6 +15,12 @@ App.SearchController = Em.ArrayController.extend(
             false
     ).property('meta')
 
+    zeroResults:(->
+        return false unless @get('meta')
+        total = @get('meta.pagination.total_count')
+        total == 0
+    ).property('meta')
+
     _search:(params) ->
 
             model = @get('model')
