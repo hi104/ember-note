@@ -9,7 +9,6 @@ App.SearchController = Em.ArrayController.extend(
         total = @get('meta.pagination.total_count')
         page = @get('meta.pagination.page')
         per = @get('meta.pagination.per_page')
-        console.log(page * per, total)
         if total > (page * per)
             true
         else
@@ -30,7 +29,6 @@ App.SearchController = Em.ArrayController.extend(
 
             fail = (reason) =>
                 @set('isLoading', false)
-                console.log reason
 
             @set('isLoading', true)
             $.ajax('/notes/search',
@@ -47,6 +45,7 @@ App.SearchController = Em.ArrayController.extend(
 
             params = q: @get('searchParams')
             @get('model').clear()
+            @set('meta', null)
             @_search(params)
 
         more: ->
