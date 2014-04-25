@@ -40,10 +40,15 @@
       </div>
     </div>
   {{/each}}
+
   {{#if avaiableMore}}
-  <button class="btn btn-primary btn-lg btn-block" {{action 'more'}}>
-    More
-  </button>
+    <button class="btn btn-primary btn-lg btn-block" {{action 'more'}}>
+          {{#if isLoading}}
+            Loading...
+          {{else}}
+            More
+          {{/if}}
+    </button>
   {{/if}}
 
 </div>
