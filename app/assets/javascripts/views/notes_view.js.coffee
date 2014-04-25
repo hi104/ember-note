@@ -5,7 +5,7 @@ App.NoteIndexView = Ember.View.extend
 
         return unless e.data
         self = e.data._self
-        if e.keyCode == 37
+        if e.keyCode == 37 # key right
             e.preventDefault()
             $('#note-list').focus()
 

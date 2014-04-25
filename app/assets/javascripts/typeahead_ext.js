@@ -20,7 +20,6 @@ $.fn.typeahead.Constructor.prototype.move =  function (e) {
       var active = this.$menu.find('.active');
       if (!active.length) {
           switch(e.keyCode) {
-            case 9: // tab
             case 13: // enter
               this.hide();
               return;
@@ -28,7 +27,6 @@ $.fn.typeahead.Constructor.prototype.move =  function (e) {
       }
 
       switch(e.keyCode) {
-        case 9: // tab
         case 13: // enter
         case 27: // escape
           e.preventDefault();
@@ -39,10 +37,40 @@ $.fn.typeahead.Constructor.prototype.move =  function (e) {
           this.prev();
           break;
 
+        case 9: // tab
         case 40: // down arrow
           e.preventDefault();
           this.next();
           break;
       }
       e.stopPropagation();
+};
+
+$.fn.typeahead.Constructor.prototype.keyup =  function (e) {
+      switch(e.keyCode) {
+        case 40: // down arrow
+        case 38: // up arrow
+        case 16: // shift
+        case 17: // ctrl
+        case 18: // alt
+        case 9: // tab
+
+          break
+
+        case 13: // enter
+          if (!this.shown) return
+          this.select()
+          break
+
+        case 27: // escape
+          if (!this.shown) return
+          this.hide()
+          break
+
+        default:
+          this.lookup()
+      }
+
+      e.stopPropagation()
+      e.preventDefault()
 };

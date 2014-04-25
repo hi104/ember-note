@@ -41,7 +41,8 @@ App.SearchInputView = App.TagInputView.extend
     didInsertElement: ->
         self = @
         $(@get('element')).on('keydown', 'input', (e) ->
-            if e.keyCode == 9 # tab
+
+            if e.keyCode == 40 # down
                 $('#note-list').focus() #NOTE direct
                 e.preventDefault()
                 controller = self.get('controller')  # direct access another controller
