@@ -12,6 +12,7 @@
 //= require jquery-2.0.0.min.js
 //= require jquery_ujs
 //= require marked.js
+//= require highlight.pack.js
 //= require moment.min.js
 //= require ace.js
 //= require mode-markdown.js
