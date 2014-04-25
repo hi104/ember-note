@@ -30,6 +30,7 @@ gem 'fog', "~> 1.3.1"
 gem 'kaminari'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'newrelic_rpm'
 
 group :doc do
   gem 'sdoc', require: false
