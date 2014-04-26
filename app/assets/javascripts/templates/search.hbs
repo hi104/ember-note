@@ -1,4 +1,3 @@
-
 <div class='app-header'>
   {{view Ember.TextField valueBinding="searchParams" id="inputSearch"}}
 
@@ -13,44 +12,45 @@
   {{partial "menu"}}
 </div>
 
-<div class="search-notes">
-  {{#each note in controller}}
-    <div class="note-row">
-      <div class="note-title">
-        <h2>
-          {{#link-to "note.index" note.id}}
-          {{note.name}}
-          {{/link-to}}
-        </h2>
-        {{#each tagging in note.taggings}}
-          <span class="label label-default tag-label" {{bind-attr style=tagging.tag.styleColor}}>
-            {{tagging.tag.name}}
+<div class="fill" style="top:40px;">
+  <div class="search-notes">
+    {{#each note in controller}}
+      <div class="note-row">
+        <div class="note-title">
+          <h2>
+            {{#link-to "note.index" note.id}}
+            {{note.name}}
+            {{/link-to}}
+          </h2>
+          {{#each tagging in note.taggings}}
+            <span class="label label-default tag-label" {{bind-attr style=tagging.tag.styleColor}}>
+              {{tagging.tag.name}}
+            </span>
+          {{/each}}
+          <span>
+            updated at: {{formatDate note.updated_at 'L'}}
           </span>
-        {{/each}}
-        <span>
-          updated at: {{formatDate note.updated_at 'L'}}
-        </span>
+        </div>
+        <div class="note-content">
+          {{markdown note.content.content}}
+        </div>
       </div>
-      <div class="note-content">
-        {{markdown note.content.content}}
-      </div>
-    </div>
-  {{else}}
-    {{#if zeroResults}}
-      <div class="well">
-        no results were match you search : {{meta.q}}
-      </div>
+    {{else}}
+      {{#if zeroResults}}
+        <div class="well">
+          no results were match you search : {{meta.q}}
+        </div>
+      {{/if}}
+    {{/each}}
+
+    {{#if avaiableMore}}
+      <button class="btn btn-primary btn-lg btn-block" {{action 'more'}}>
+        {{#if isLoading}}
+          Loading...
+        {{else}}
+          More
+        {{/if}}
+      </button>
     {{/if}}
-  {{/each}}
-
-  {{#if avaiableMore}}
-    <button class="btn btn-primary btn-lg btn-block" {{action 'more'}}>
-          {{#if isLoading}}
-            Loading...
-          {{else}}
-            More
-          {{/if}}
-    </button>
-  {{/if}}
-
+  </div>
 </div>

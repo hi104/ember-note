@@ -60,6 +60,10 @@ html,body {
 }
 
 .app-header{
+    z-index:10000;
+    position:fixed;
+    left:0;
+    right:0;
     background:#eee;
     padding-top:4px;
     padding-left:15px;
