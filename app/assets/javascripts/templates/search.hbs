@@ -1,6 +1,6 @@
 
 <div class='app-header'>
-  {{view Ember.TextField valueBinding="searchParams" }}
+  {{view Ember.TextField valueBinding="searchParams" id="inputSearch"}}
 
   <button class="btn btn-default btn-sm" {{action 'search'}}>
     {{#if isLoading}}
