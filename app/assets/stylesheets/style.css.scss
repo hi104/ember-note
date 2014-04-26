@@ -66,9 +66,13 @@ html,body {
     right:0;
     background:#eee;
     padding-top:4px;
-    padding-left:15px;
+    padding-left:5px;
     height:40px;
     border-bottom:1px solid #ccc;
+}
+.app-menu{
+    display:inline;
+    padding-right:15px;
 }
 .sidebar{
     border-right:1px solid #ccc;

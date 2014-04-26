@@ -1,5 +1,11 @@
 <div class='app-header'>
-  {{view Ember.TextField valueBinding="searchParams" id="inputSearch"}}
+  {{partial "menu"}}
+
+  {{view Ember.TextField
+         valueBinding="searchParams"
+         id="inputSearch"
+         placeholder='Search'
+  }}
 
   <button class="btn btn-default btn-sm" {{action 'search'}}>
     {{#if isLoading}}
@@ -9,7 +15,7 @@
     {{/if}}
   </button>
 
-  {{partial "menu"}}
+
 </div>
 
 <div class="fill" style="top:40px;">
