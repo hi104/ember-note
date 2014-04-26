@@ -60,7 +60,7 @@ html,body {
 }
 
 .app-header{
-    z-index:10000;
+    z-index:1000;
     position:fixed;
     left:0;
     right:0;
@@ -289,4 +289,12 @@ html,body {
         // overflow-y: scroll;
         overflow: hidden;
     }
+}
+
+// override ember-addons.bs_for_ember
+.growl-notifications{
+    position:fixed;
+    right:10px;
+    top:50px;
+    z-index:9999;
 }
