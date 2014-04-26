@@ -12,3 +12,4 @@ App.SearchView = Ember.View.extend
 
     didInsertElement:->
         $('#inputSearch').on('keydown', { _self: @ }, @keyDown);
+        $('#inputSearch').focus()
