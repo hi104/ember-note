@@ -13,7 +13,6 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'ember-rails'
 gem 'ember-source', '1.2.0'
-gem 'acts-as-taggable-on'
 gem 'font-awesome-sass'
 
 gem 'devise'
