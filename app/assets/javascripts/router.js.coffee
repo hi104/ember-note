@@ -14,4 +14,4 @@ App.Router.map () ->
         )
     )
 
-    @route('search', path: '/search')
+    @route('search', path: '/search', queryParams:['q'])

@@ -23,26 +23,28 @@ App.SearchController = Em.ArrayController.extend(
 
     _search:(params) ->
 
-            model = @get('model')
-            self = @
-            success = (data) =>
-                @set('isLoading', false)
-                data.notes.forEach((note_id) ->
-                    note = self.store.find('note', note_id)
-                    model.addObject(note)
-                )
-                @set('meta', data.meta)
+        return unless params.q
 
-            fail = (reason) =>
-                @set('isLoading', false)
-
-            @set('isLoading', true)
-            $.ajax('/notes/search',
-                data: params,
-                success: success,
-                fail: fail,
+        model = @get('model')
+        self = @
+        success = (data) =>
+            @set('isLoading', false)
+            data.notes.forEach((note_id) ->
+                note = self.store.find('note', note_id)
+                model.addObject(note)
             )
+            @set('meta', data.meta)
 
+        error = (reason) =>
+            Bootstrap.GNM.push('Error!', reason.statusText, 'error');
+            @set('isLoading', false)
+
+        @set('isLoading', true)
+        $.ajax('/notes/search',
+            data: params,
+            success: success,
+            error: error
+        )
 
     actions:
         search: ->
@@ -52,7 +54,7 @@ App.SearchController = Em.ArrayController.extend(
             params = q: @get('searchParams')
             @get('model').clear()
             @set('meta', null)
-            @_search(params)
+            @transitionToRoute('search', { queryParams: params})
 
         more: ->
             params = {
