@@ -1,6 +1,6 @@
-App.NoteController = Em.ObjectController.extend
-    deactivate: ->
-        @get('controller').set('model', null)
+App.NoteController = Em.ObjectController.extend(
+
+)
 
 App.NoteIndexController = Em.ObjectController.extend
     needs:['notes']

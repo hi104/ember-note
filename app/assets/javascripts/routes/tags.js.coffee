@@ -1,7 +1,9 @@
 App.TagsIndexRoute = Ember.Route.extend(
+    model:(params) ->
+        @store.find('tag')
+
     setupController:(controller, model, queryParams)->
         @._super.apply(@, arguments);
-        controller.set('model', App.get('tags'))
 )
 
 

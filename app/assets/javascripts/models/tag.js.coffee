@@ -1,6 +1,7 @@
 App.Tag = DS.Model.extend
     name: DS.attr 'string'
     color: DS.attr 'string'
+    taggings_count: DS.attr 'number'
     taggings: DS.hasMany 'tagging'
 
     isEditing: false

@@ -22,6 +22,11 @@
           </span>
         {{/if}}
       </td>
+      <td>
+        <span class="badge">
+          {{tag.taggings_count}}
+        </span>
+      </td>
       <td style="width:4px">
 
         <button class='btn btn-default btn-xs' {{action 'delete' tag bubbles=false}} >

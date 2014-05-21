@@ -5,6 +5,10 @@ class NoteTag < ActiveRecord::Base
 
   validates :name, :uniqueness => {:scope => :user_id}
 
+  def taggings_count
+    note_taggings_count
+  end
+
   def self.create_from_string(user, string)
 
     return [] unless string

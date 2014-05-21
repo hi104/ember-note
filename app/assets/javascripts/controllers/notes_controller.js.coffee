@@ -109,9 +109,6 @@ App.NotesController = Em.ArrayController.extend(
 
         @set('model.filterFunction', filter_fn)
 
-        # if @get('arrangedContent').length > 0
-        #     @transitionToRoute('note.index', @get('arrangedContent').objectAt(0).get('id'))
-
     actions:
         edit:->
             model = @get('controllers.note').get('model')
