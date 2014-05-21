@@ -15,3 +15,4 @@ App.Router.map () ->
     )
 
     @route('search', path: '/search', queryParams:['q'])
+    @route('dashboard', path: '/dashboard')

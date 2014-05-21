@@ -1,0 +1,48 @@
+<div class='app-header'>
+  {{partial "menu"}}
+</div>
+
+<div class="fill" style="top:40px;">
+
+  <div class="" style="padding:10px">
+    <div class="" style="width:280px;border:1px solid #ccc; float:left">
+      <div style='padding:5px;padding-left:15px'>
+        Top 5 last updated notes
+      </div>
+
+      <div id="note-list" tabindex="0" class="">
+        <table class="table table-hover" style="margin-bottom:0px">
+          <tbody>
+            {{#each note in notes}}
+
+              {{#link-to "note.index" note.id tagName="tr" currentWhen="note" class='note-row'}}
+              <td {{bind-attr style=note.rowStyle}}>
+                <div>
+                  <span class='note-name'>
+                    {{note.name}}
+                  </span>
+                  <span class='note-date'>
+                    {{note.updatedAtFromNow}}
+                  </span>
+                </div>
+                <div>
+                  {{#each tagging in note.taggings}}
+                    <span class="label label-default tag-label" {{bind-attr style=tagging.tag.styleColor}}>
+                      {{tagging.tag.name}}
+                    </span>
+                  {{/each}}
+                </div>
+
+              </td>
+              {{/link-to}}
+            {{else}}
+              <tr><td> none item</td></tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+</div>
