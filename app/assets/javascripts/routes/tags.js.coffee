@@ -1,11 +1,12 @@
-App.TagsIndexRoute = Ember.Route.extend(
+App.TagsRoute = Ember.Route.extend(
     model:(params) ->
-        @store.find('tag')
-
-    setupController:(controller, model, queryParams)->
-        @._super.apply(@, arguments);
+        @store.find('tag') # for load from server
 )
 
+App.TagsIndexRoute = Ember.Route.extend(
+    model: ->
+        @store.all('tag')
+)
 
 App.TagRoute = Ember.Route.extend(
     model:(params)->
