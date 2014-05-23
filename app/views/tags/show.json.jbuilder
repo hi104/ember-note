@@ -1,3 +1,3 @@
 json.tag do
-  json.extract! @tag, :id, :name, :color
+  json.extract! @tag, :id, :name, :color, :taggings_count
 end
