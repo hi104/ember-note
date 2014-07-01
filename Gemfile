@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.1.2"
+
 gem 'rails', '4.0.4'
 
 # gem 'sqlite3'
@@ -30,6 +32,9 @@ gem 'kaminari'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'newrelic_rpm'
+
+gem 'foreman'
+gem 'unicorn'
 
 group :doc do
   gem 'sdoc', require: false
