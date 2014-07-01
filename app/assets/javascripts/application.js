@@ -20,4 +20,5 @@
 //= require bootstrap-tagsinput.js
 //= require typeahead.js
 //= require typeahead_ext.js
+//= require emojify.min.js
 //= require ember_application
