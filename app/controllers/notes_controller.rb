@@ -33,7 +33,7 @@ class NotesController < ApplicationController
   end
 
   def index
-    @notes = current_user.notes.includes(:note_taggings => :note_tag)
+    @notes = current_user.notes.includes([:note_taggings, :note_tags])
   end
 
   def show
