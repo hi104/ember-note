@@ -14,7 +14,6 @@
 //= require marked.js
 //= require highlight.pack.js
 //= require moment.min.js
-//= require theme-chrome.js
 //= require bootstrap-tagsinput.js
 //= require typeahead.js
 //= require typeahead_ext.js
